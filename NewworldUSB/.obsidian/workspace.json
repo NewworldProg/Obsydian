@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "2a10679be50ba106",
+    "type": "split",
+    "children": [
+      {
+        "id": "4903d6f515a36b6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7c9fc074062c9349",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DJANGO/PUT JEDNE FUNKCIONALNOSTI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PUT JEDNE FUNKCIONALNOSTI"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "eecbace2e9c2ccc1",
+    "type": "split",
+    "children": [
+      {
+        "id": "78d5ea939c849595",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "245cdfbc29ee8fde",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e33f1a882f22f28b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9d18d28d2bb73342",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 215.5058479309082
+  },
+  "right": {
+    "id": "9bb57e0b558885e4",
+    "type": "split",
+    "children": [
+      {
+        "id": "c13338ef4b47b716",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0161f1e3d3368242",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "04.04.2025.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 04.04.2025"
+            }
+          },
+          {
+            "id": "c372b97e31dfc76c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "65afbb2ff81449b1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "330ba33c41e4d89f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Igricwe.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Igricwe"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "7c9fc074062c9349",
+  "lastOpenFiles": [
+    "DJANGO/html linkovi.md",
+    "DJANGO/PUT JEDNE FUNKCIONALNOSTI.md",
+    "IT AKADEMIJA/JAVA/Java advanced/Napredno OOP/Link Elearning 4.md",
+    "DJANGO",
+    "IT AKADEMIJA/JAVA/Java advanced/Napredno OOP/Link Elearning 3.md",
+    "Bezolovni benzin.md",
+    "Untitled.md",
+    "da bidimo/Untitled.canvas",
+    "Informacija o ponasanju pripadnika MO i VS za maj 2025.sdc",
+    "da bidimo",
+    "Clippings/Link Elearning 1.md",
+    "IT AKADEMIJA/JAVA/Java advanced/Napredno OOP/Link Elearning 2.md",
+    "IT AKADEMIJA/JAVA/Java advanced/Napredno OOP/Link Elearning.md",
+    "IT AKADEMIJA/JAVA/Java advanced/Napredno OOP/Link Elearning 1.md",
+    "Administracija/Stampac/Stampac mi je prijavljivao printer in error i nisam mogao da stampam na njemu.md",
+    "Administracija/Stampac",
+    "Administracija",
+    "Zapazanja.md",
+    "JCPR_03_10 1.jpg",
+    "JCPR_03_10.jpg",
+    "JCPR_02_03.jpg",
+    "IT AKADEMIJA/JAVA/Java advanced/Napredno OOP",
+    "IT AKADEMIJA/JAVA/Java core/detekcija i obrada gresaka/Link Elearning.md",
+    "IT AKADEMIJA/JAVA/Java advanced",
+    "IT AKADEMIJA/JAVA/Untitled.md",
+    "IT AKADEMIJA/JAVA/Java core",
+    "IT AKADEMIJA/JAVA/Java core/detekcija i obrada gresaka/Link Elearning 5.md",
+    "IT AKADEMIJA/JAVA/Java core/detekcija i obrada gresaka",
+    "IT AKADEMIJA/JAVA/Java core/Tipovi podataka i operateri/Link Elearning 4.md",
+    "IT AKADEMIJA/JAVA/Java core/Tipovi podataka i operateri/Tipovi podataka.md",
+    "IT AKADEMIJA/JAVA/Java core/nizovi i brojevi/Link Elearning 3.md",
+    "IT AKADEMIJA/JAVA/Java core/nizovi i brojevi/Link Elearning 2.md",
+    "IT AKADEMIJA/JAVA/Java core/Objektno orjentisano prog/Link Elearning 2.md",
+    "Clippings/Microsoft Toolkit Activator for Windows 10 & Office 365.md",
+    "Clippings/Goldmine.md",
+    "Clippings/Auto CAD.md",
+    "Clippings/cir-latin.md",
+    "Clippings/ComAgent.exe Windows process - What is it.md",
+    "Clippings/For, while, do while.md",
+    "IT AKADEMIJA/JAVA/Java core/nizovi i brojevi",
+    "JCPR_03_09.jpg",
+    "JCPR_03_11.jpg",
+    "flowchart-symbols-cheatsheet.png",
+    "top-4-flowchart-symbols (1).webp",
+    "top-4-flowchart-symbols.webp"
+  ]
+}

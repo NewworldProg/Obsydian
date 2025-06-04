@@ -1,0 +1,1 @@
+imas graf kartu pa vidis wireless
