@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Clippings/First Time Configuration - RouterOS - MikroTik Documentation.md",
+                "file": "mikrotik/First Time Configuration - RouterOS - MikroTik Documentation.md",
                 "mode": "source",
                 "source": false
               },
@@ -170,9 +170,11 @@
   },
   "active": "7c9fc074062c9349",
   "lastOpenFiles": [
+    "mikrotik/First Time Configuration - RouterOS - MikroTik Documentation.md",
+    "mikrotik/pojasnjenja/Pojasnjenja.md",
     "mikrotik/Instalacija.md",
-    "Clippings/First Time Configuration - RouterOS - MikroTik Documentation.md",
     "mikrotik/Sistemski zahtevi.md",
+    "mikrotik/pojasnjenja",
     "DJANGO/PUT JEDNE FUNKCIONALNOSTI.md",
     "mikrotik",
     "DJANGO/html linkovi.md",
@@ -201,7 +203,6 @@
     "IT AKADEMIJA/JAVA/Untitled.md",
     "IT AKADEMIJA/JAVA/Java core",
     "IT AKADEMIJA/JAVA/Java core/detekcija i obrada gresaka/Link Elearning 5.md",
-    "IT AKADEMIJA/JAVA/Java core/detekcija i obrada gresaka",
     "IT AKADEMIJA/JAVA/Java core/Tipovi podataka i operateri/Link Elearning 4.md",
     "IT AKADEMIJA/JAVA/Java core/Tipovi podataka i operateri/Tipovi podataka.md",
     "IT AKADEMIJA/JAVA/Java core/nizovi i brojevi/Link Elearning 3.md",
@@ -209,7 +210,6 @@
     "IT AKADEMIJA/JAVA/Java core/Objektno orjentisano prog/Link Elearning 2.md",
     "Clippings/Microsoft Toolkit Activator for Windows 10 & Office 365.md",
     "Clippings/Goldmine.md",
-    "Clippings/Auto CAD.md",
     "JCPR_03_09.jpg",
     "JCPR_03_11.jpg",
     "flowchart-symbols-cheatsheet.png",

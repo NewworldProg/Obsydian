@@ -11,26 +11,26 @@ tags:
 ---
 ## ==Connecting to the Router==
 
-There are two types of routers:
+==There are two types of routers:==
 
-- Routers with default configuration.
-- Routers without default configuration. In cases where no specific configuration is present, the IP address 192.168.88.1/24 is assigned to ether1, combo1, sfp1, or MGMT/BOOT.
+- Routers with ==default configuration.==
+- Routers ==without default configuration.== ==In cases== where no specific configuration is present, ==the IP address 192.168.88.1/24 is assigned to ether1, combo1, sfp1, or MGMT/BOOT.==
 
-For additional details regarding the current default configuration, please refer to the Quick Guide document provided with your device. This document outlines which ports to initially utilize for connection and instructions on device setup.
+For additional details regarding the current default configuration, please refer to the ==Quick Guide== document provided with your device. This document ==outlines which ports to initially utilize for connection and instructions on device setup.==
 
-This document describes the step-by-step process for configuring the device from scratch. Therefore, we recommend clearing all defaults when initiating the setup.
+==This document describes the step-by-step process== for ==configuring the device from scratch==. Therefore, ==we recommend clearing all defaults when initiating the setup.==
 
-When connecting the first time to the router with the default username **admin** and **no password** (or, for some models, check user and wireless passwords on the sticker). Upon the initial boot, a notification will appear, offering you the choice to either remove the default configuration (even if the default config has only an IP address), leading to a reboot with no configuration applied, or to "Show Script" and retain the current default configuration, applying it accordingly. Since this article assumes that there is no configuration on the router, you should remove it by pressing "r" on the keyboard when prompted or click on the "Remove Configuration" button in WinBox.
+When connecting the first time to the router with the ==default username **admin** and **no password**== (or, for some models, check user and wireless passwords on the sticker). ==Upon the initial boot,== a notification will appear, offering you the choice to either remove the ==default configuration== (even if the default config has ==only an IP address==), leading to a reboot with no configuration applied, or to "Show Script" and retain the current default configuration, applying it accordingly. Since this article assumes that there is no configuration on the router, ==you should remove it by pressing "r"== on the keyboard when prompted or click on the "Remove Configuration" button in WinBox.
 
-## Router without Default Configuration
+## ==Router without Default Configuration==
 
 If the router doesn't have a default configuration, there are multiple options to consider. However, in this case, we'll opt for a method that best fits our requirements.
 
-Connect the ISP cable to the router's ether1 port and connect your PC to any port except ether1. Then, launch WinBox and search for your router using the neighbor discovery feature. See detailed example in [Winbox article](https://help.mikrotik.com/docs/spaces/ROS/pages/328129/WinBox#WinBox-StartingWinbox).
+==Connect the ISP cable== to the router's ether1 port and connect your PC to any port except ether1. Then, ==launch WinBox and search for your router== using the neighbor discovery feature. See detailed example in [Winbox article](https://help.mikrotik.com/docs/spaces/ROS/pages/328129/WinBox#WinBox-StartingWinbox).
 
-If the router appears in the list, select its MAC address and click **Connect**.
+==If the router appears in the list, select its MAC address and click **Connect**==.
 
-The easiest method to ensure a completely clean router is to run the CLI command
+==The easiest method to ensure a completely clean router is to run the CLI command==
 
 `/system reset-configuration no-defaults=yes skip-backup=yes`
 
@@ -38,63 +38,69 @@ Or from WinBox:
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/reset_config_no_def.png?version=1&modificationDate=1715085477825&api=v2)
 
-## Configuring IP Access
+## ==Configuring IP Access==
 
-As MAC connection can sometimes be unreliable, our first step is to configure the router to enable IP connectivity:
+As ==MAC connection can sometimes be unreliable==, our ==first step is to configure the router to enable IP connectivity:==
 
-- Create a bridge interface and assign bridge ports;
-- Assign an IP address to the bridge interface;
-- Configure a DHCP server.
+- ==Create a bridge interface and assign bridge ports;==
+- ==Assign an IP address to the bridge interface==;
+- ==Configure a DHCP server.==
 
 Setting up the bridge and assigning an IP address are straightforward processes:
 
 `/interface bridge add name=bridge1 /interface bridge port add interface=ether2 bridge=bridge1 /ip address add address=192.168.88.1/24 interface=bridge1`
 
-If you prefer WinBox/WebFig as configuration tools:
+==If you prefer WinBox/WebFig as configuration tools:==
 
-- Open **Bridge** window, **Bridge** tab should be selected;
-- Click on the **+** button to open a new dialog box. You can either enter a custom bridge name or retain the default **bridge1**, then click **OK** to proceed;
-- Switch to the **Ports** tab and click on the **+** button to open another dialog box;
+- ==Open== ==**Bridge** window==, **Bridge** tab should be selected;
+- Click on the **+** button to open a new dialog box. You can either enter a ==custom bridge name or retain the default **bridge1**==, then click ==**OK** to proceed;==
+- Switch to the ==**Ports** tab and click on the **+** button to open another dialog box;==
 - Select interface **ether2** and bridge **bridge1** form drop-down lists and click on the **OK** button to apply settings;
 - You may close the bridge dialog.
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/add_bridge_port.png?version=1&modificationDate=1715087952194&api=v2) ![](https://help.mikrotik.com/docs/download/attachments/328151/add_bridge.png?version=1&modificationDate=1715087944378&api=v2)
 
-- Access the **IP** menu and navigate to the **Addresses** dialog;
-- Select the **+** button to open a new dialog box;
-- Enter IP address **192.168.88.1/24** select interface **bridge1** from the drop-down list;
-- Click **OK** to confirm the settings.
+- ==Access the **IP** menu and navigate to the **Addresses** dialog==;
+- ==Select the **+**== button to open a new dialog box;
+- ==Enter IP address **192.168.88.1/24**== select interface **bridge1** from the drop-down list;
+- ==Click **OK**== to confirm the settings.
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/ip_addr_add.png?version=1&modificationDate=1715153423458&api=v2)
 
-Next, proceed with setting up a DHCP server. To simplify and expedite this process, we'll execute the **setup** command.
+Next, proceed with setting up a DHCP server. To simplify and expedite this process, we'll execute the ==**setup** command.==
 
 `[admin@MikroTik] > ip dhcp-server/ setup [enter] Select interface to run DHCP server on   dhcp server interface: bridge1 [enter] Select network for DHCP addresses   dhcp address space: 192.168.88.0/24 [enter] Select gateway for given network   gateway for dhcp network: 192.168.88.1 [enter] Select pool of ip addresses given out by DHCP server   addresses to give out: 192.168.88.2-192.168.88.254 [enter] Select DNS servers   dns servers: 192.168.88.1 [enter]                Select lease time   lease time: 1800 [enter]`
 
-Notice that most of the configuration options are automatically determined and you just simply need to hit the enter key.
+Notice that ==most of the configuration options are automatically determined== and you just simply need to hit the enter key.
 
-The setup tool is also accessible in WinBox/WebFig:
+The setup tool is also accessible ==in WinBox/WebFig:==
 
-- Navigate to **IP -> DHCP Server** window, ensuring the **DHCP** tab is selected;
-- Click on the **DHCP Setup** button to open a new dialog;
-- Select the **bridge1** as the **DHCP Server Interface** and click  **Next**;
-- Follow the wizard to complete the setup.
+- ==Navigate to **IP -> DHCP Server**== window, ensuring the **DHCP** tab is selected;
+- Click on the ==**DHCP Setup**== button to open a new dialog;
+- ==Select the **bridge1** as the **DHCP Server Interface** and click  **Next**;==
+- ==Follow the wizard== to complete the setup.
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/dhcp_setup.png?version=1&modificationDate=1715089028782&api=v2)
 
-Following these steps, the connected PC should now obtain a dynamic IP address. You can then close Winbox and reconnect to the router using the IP address (192.168.88.1).
+Following these steps, ==the connected PC should now obtain a dynamic IP address==. You can then close Winbox and ==reconnect to the router using the IP address (192.168.88.1).==
 
-## Configuring Internet Connection
+## ==Configuring Internet Connection==
 
-To enable internet access for the router, you'll need to configure one of the following common types of internet connections:
+==To enable internet access for the router==, you'll need to configure one of the following common types of ==internet connections:==
 
-- Dynamic public IP address.
+- ==Dynamic public IP address.==
 - Static public IP address.
-- PPPoE connection.
+- ==PPPoE connection.==
 
-## Dynamic Public IP
+## ==Dynamic Public IP==
 
-Dynamic address configuration is the easiest option. Simply set up a DHCP client on the public interface. The DHCP client will obtain information from your Internet Service Provider (ISP), such as an IP address, DNS servers, NTP servers, and default route, making the setup process straightforward for you.
+[[mikrotik/pojasnjenja/Pojasnjenja|Pojasnjenja]]
+
+
+
+Dynamic address configuration is the easiest option. Simply ==set up a DHCP client on the public interface.== The ==DHCP== ==client will obtain information from your Internet Service Provider (ISP)==, such as an ==IP address, DNS servers, NTP servers, and default route==, making the setup process straightforward for you.
+
+
 
 `/ip dhcp-client add disabled=no interface=ether1`
 
@@ -102,43 +108,43 @@ After adding the client you should see the assigned address and status should be
 
 `[admin@MikroTik] > ip dhcp-client print Columns: INTERFACE, USE-PEER-DNS, ADD-DEFAULT-ROUTE, STATUS, ADDRESS # INTERFACE  USE-PEER-DNS  ADD-DEFAULT-ROUTE  STATUS  ADDRESS         0 ether1     yes           yes                bound   1.2.3.100/24`
 
-## Static Public IP
+## ==Static Public IP==
 
-When configuring a static address, your ISP provides specific parameters, such as:
+==When configuring a static address, your ISP provides specific parameters, such as:==
 
-- IP: 1.2.3.100/24
-- Gateway: 1.2.3.1
-- DNS: 8.8.8.8
+- ==IP: 1.2.3.100/24==
+- ==Gateway: 1.2.3.1==
+- ==DNS: 8.8.8.8==
 
 These are three basic parameters that you need to get the internet connection working.
 
-To configure this in RouterOS, we'll manually add an IP address, add a default route with a provided gateway, and set up a DNS server
+==To configure this in RouterOS, we'll manually add an IP address, add a default route with a provided gateway, and set up a DNS server==
 
 `/ip address add address=1.2.3.100/24 interface=ether1 /ip route add gateway=1.2.3.1 /ip dns set servers=8.8.8.8`
 
-## PPPoE Connection
+## ==PPPoE Connection==
 
-PPPoE connection also gives you a dynamic IP address and can configure dynamically DNS and default gateway. Typically service provider (ISP) gives you a username and password for the connection
+PPPoE connection ==also gives you a dynamic IP address and can configure dynamically DNS== and default gateway. ==Typically service provider (ISP) gives you a username and password for the connection==
 
 `/interface pppoe-client   add disabled=no interface=ether1 user=me password=123 \     add-default-route=yes use-peer-dns=yes`
 
-Winbox/WebFig actions:
+==Winbox/WebFig actions:==
 
-- In the **PPP** window, select the **Interfaces** tab and click the "+" button;
-- Choose **PPPoE Client** from the dropdown list;
-- Set the name and select **ether1** as the interface;
-- Go to the **Dial Out** tab, configure the username, password, and other parameters;
-- Click **OK** to save the settings.
+- In the ==**PPP**== window, select the ==**Interfaces** tab and click the "+"== button;
+- ==Choose **PPPoE Client** from the dropdown list;==
+- ==Set the name and select **ether1**== as the interface;
+- Go to the **==Dial Out** tab, configure the username, password, and other parameters;==
+- ==Click **OK**== to save the settings.
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/pppoe_client_01.png?version=2&modificationDate=1715090147404&api=v2)
 
 ![](https://help.mikrotik.com/docs/download/thumbnails/328151/pppoe_client_02.png?version=1&modificationDate=1715090155049&api=v2)
 
-Further in configuration, the **WAN** interface is now the **pppoe-out1** interface, not **ether1**.
+Further in configuration, t==he **WAN** interface is now the **pppoe-out1** interface, not **ether1**.==
 
-## Verify Connectivity
+## ==Verify Connectivity==
 
-Once the configuration is complete, you should be able to access the internet from the router. To verify IP connectivity, try pinging a known IP address, such as a Google DNS server.
+Once the configuration is complete, you should be able to access the internet from the router. ==To verify IP connectivity, try pinging a known IP address, such as a Google DNS server.==
 
 `[admin@MikroTik] > /ping 8.8.8.8   SEQ HOST                                     SIZE TTL TIME       STATUS                  0 8.8.8.8                                    56  55 14ms399us      1 8.8.8.8                                    56  55 18ms534us      2 8.8.8.8                                    56  55 14ms384us ` 
 
@@ -146,20 +152,20 @@ Verify DNS request
 
 `[admin@MikroTik] > /ping google.com   SEQ HOST                                     SIZE TTL TIME       STATUS                  0 142.250.74.14                              56  55 14ms475us      1 142.250.74.14                              56  55 14ms308us      2 142.250.74.14                              56  55 14ms238us`
 
-If all settings are configured correctly, both pings should succeed.  
+==If all settings are configured correctly, both pings should succeed.==  
 If there's a failure, please refer to the [Troubleshooting](https://help.mikrotik.com/docs/spaces/ROS/pages/328151/#FirstTimeConfiguration-Troubleshooting) section for assistance.
 
-## Protecting the Router
+## ==Protecting the Router==
 
-As the router is now accessible worldwide, it's important to protect it from potential intruders and basic attacks.
+As the ==router is now accessible worldwide==, it's important to ==protect it from potential intruders and basic attacks.==
 
-## User Password Access
+## ==User Password Access==
 
-For MikroTik routers, it's essential to set up passwords. We recommend using a password generator tool to create robust passwords that meet the following criteria:
+For ==MikroTik routers, it's essential to set up passwords==. ==We recommend using a password generator tool to create robust passwords== that meet the following criteria:
 
-- At least 12 characters long;
-- Consist of numbers, symbols, uppercase, and lowercase letters;
-- Avoid using dictionary words or combinations thereof.
+- At least ==12 characters long==;
+- Consist of ==numbers, symbols, uppercase, and lowercase letters==;
+- ==Avoid using dictionary words or combinations thereof==.
 
 `/user set 0 password="!={Ba3N!40TуX+GvKBzjTLIUcx/,"`
 
@@ -167,25 +173,25 @@ Another method to set a password for the current user:
 
 `/password`
 
-We highly recommend using a secondary method or the Winbox interface to update your router's password, as an added measure to safeguard against unauthorized access.
+==We highly recommend using a secondary method or the Winbox interface to update your router's password,== as an added measure to safeguard against unauthorized access.
 
 `[admin@MikroTik] > /password  old-password: ******** new-password: **************************** confirm-new-password: ****************************`
 
-Ensure you remember the password! If it's forgotten, there's no way to recover it. You'll have to reset the configuration or reinstall the router system!
+Ensure you remember the password! ==If it's forgotten, there's no way to recover it. You'll have to reset the configuration or reinstall the router system!==
 
-You can also add additional users with full or limited router access in the **/user** menu
+==You can also add additional users with full or limited router access in the **/user** menu==
 
-The best practice is to create a new user with a strong password and disable or remove the default **admin** user.
+==The best practice is to create a new user with a strong password and disable or remove the default **admin** user.==
 
 `/user add name=myname password=mypassword group=full /user remove admin`
 
 **Note:**Log in to the router using the new credentials to verify that the username and password are functioning correctly.
 
-## MAC Connectivity Access
+## ==MAC Connectivity Access==
 
-By default, the MAC server runs on **all** interfaces. To restrict MAC connectivity from the WAN port, we'll disable the default all entry and add a LAN interface.
+==By default, the MAC server runs on **all** interfaces==. ==To restrict== MAC connectivity from the WAN port, we'll ==disable the default all entry and add a LAN interface.==
 
-First, create an interface list:
+First, ==create an interface list:==
 
 `[admin@MikroTik] > /interface list add name=LAN`
 
@@ -197,7 +203,7 @@ Then, add your previously created bridge named "bridge1" to the interface list:
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/int_list_port.png?version=1&modificationDate=1715093441988&api=v2)
 
-Apply newly created interface list to the MAC server:
+==Apply newly created interface list to the MAC server:==
 
 `[admin@MikroTik] > /tool mac-server set allowed-interface-list=LAN`
 
@@ -224,7 +230,7 @@ Winbox/Webfig actions:
 
 Do the same in the **MAC** **Winbox Server** tab to block Mac Winbox connections from the internet.
 
-## Neighbor Discovery
+## ==Neighbor Discovery==
 
 MikroTik Neighbor discovery protocol is used to show and recognize other MikroTik routers in the network. Disable neighbor discovery on public interfaces:
 
