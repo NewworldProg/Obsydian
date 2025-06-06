@@ -105,3 +105,6 @@ Ako želiš, mogu ti pokazati kako radi razlika između:
     
 
 Zanima li te to?
+
+
+Hecus NAS

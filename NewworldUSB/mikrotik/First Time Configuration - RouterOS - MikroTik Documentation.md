@@ -232,23 +232,23 @@ Do the same in the **MAC** **Winbox Server** tab to block Mac Winbox connections
 
 ## ==Neighbor Discovery==
 
-MikroTik Neighbor discovery protocol is used to show and recognize other MikroTik routers in the network. Disable neighbor discovery on public interfaces:
+MikroTik Neighbor discovery protocol is ==used to show and recognize other MikroTik routers in the network==. ==Disable== neighbor discovery o==n public interfaces==:
 
 `/ip neighbor discovery-settings set discover-interface-list=LAN`
 
-## IP Connectivity Access
+## ==IP Connectivity Access==
 
-While the firewall protects your router from unauthorized access by external networks, it's also possible to restrict username access based on specific IP addresses
+While the ==firewall protects your router from unauthorized access== by external networks, ==it's also possible to restrict username access based on specific IP addresses==
 
 `/user set 0 address=x.x.x.x/yy`
 
-*x.x.x.x/yy - your IP or network subnet that is allowed to access your router.*
+*x.x.x.x/yy - ==your IP or network subnet that is allowed to access your router==.*
 
-IP connectivity on the public interface must be limited in the firewall. We will accept only ICMP(ping/traceroute), IP Winbox, and ssh access.
+==IP connectivity on the public interface must be limited in the firewall. We will accept only ICMP(ping/traceroute), IP Winbox, and ssh access.==
 
-If the public interface is PPPoE, LTE, or any other type, the 'in-interface' should be set to that interface.
+If the public interface is ==PPPoE, LTE, or any other type, the 'in-interface' should be set to that interface.==
 
-The first rule accepts packets from already established connections, assuming they are safe to not overload the CPU. The second rule drops any packet that connection tracking identifies as invalid. After that, we set up typical accept rules for specific protocols.
+The ==first rule== ==accepts packets from already established connections, assuming they are safe to not overload the CPU==. The ==second rule== ==drops any packet that connection tracking identifies as invalid==. After that, we set up typical accept rules for specific protocols.
 
 If you are using Winbox/WebFig for configuration, here is an example of how to add an established/related/untracked rule:
 
@@ -265,57 +265,57 @@ If you are using Winbox/WebFig for configuration, here is an example of how to a
 
 To add additional rules, click on the "+" button for each new rule and fill in the same parameters as provided in the console example.
 
-## Administrative Services
+## ==Administrative Services==
 
-Although the firewall protects the router from the public interface, you may still want to disable RouterOS services.
+==Although the firewall protects the router== from the public interface, ==you may still want to disable RouterOS services.==
 
-Most of RouterOS administrative tools are configured at the /ip service menu
+Most of ==RouterOS administrative tools are configured at the /ip service menu==
 
-Keep only secure ones,
+==Keep only secure ones,==
 
 `/ip service disable telnet,ftp,www,api`
 
   
 
-Change default service ports, this will immediately stop most of the random SSH brute force login attempts:
+Change default service ports, ==this will immediately stop most of the random SSH brute force login== attempts:
 
 `/ip service set ssh port=2200`
 
   
 
-Additionally, each service can be secured by allowed IP address or address range(the address service will reply to), although more preferred method is to block unwanted access in firewall because the firewall will not even allow to open socket
+==Additionally==, ==each service can be secured by allowed IP address or address range==(the address service will reply to), although more preferred method is to block unwanted access in firewall because the firewall will not even allow to open socket
 
 `/ip service set winbox address=192.168.88.0/24`
 
-## Other Services
+## ==Other Services==
 
-A bandwidth server is used to test throughput between two MikroTik routers. Disable it in the production environment.
+A ==bandwidth server is used to test throughput between two MikroTik routers==. Disable it in the production environment.
 
 `/tool bandwidth-server set enabled=no ` 
 
-A router might have DNS cache enabled, which decreases resolving time for DNS requests from clients to remote servers. In case DNS cache is not required on your router or another router is used for such purposes, disable it.
+==A router might have DNS cache enabled,== which ==decreases resolving time for DNS requests== from clients to remote servers. ==In case DNS cache is not required== on your router or another router is used for such purposes, ==disable it.==
 
 `/ip dns set allow-remote-requests=no`
 
   
-Some RouterBOARDs have an LCD module for informational purposes, set pin or disable it.
+==Some RouterBOARDs have an LCD module for informational purposes, set pin or disable it.==
 
 `/lcd set enabled=no`
 
   
-It is good practice to disable all unused interfaces on your router, in order to decrease unauthorized access to your router.
+==It is good practice to disable all unused interfaces on your router, in order to decrease unauthorized access to your router.==
 
 `/interface print  /interface set x disabled=yes`
 
 Where "X" is a number of the unused interfaces.
 
-RouterOS utilizes stronger crypto for SSH, most newer programs use it, to turn on SSH strong crypto:
+==RouterOS utilizes stronger crypto for SSH==, most newer programs use it, to turn on SSH strong crypto:
 
 `/ip ssh set strong-crypto=yes`
 
   
 
-Following services are disabled by default, nevertheless, it is better to make sure that none of then were enabled accidentally:
+==Following services are disabled by default, nevertheless, it is better to make sure that none of then were enabled accidentally:==
 
 - MikroTik caching proxy,
 
@@ -335,33 +335,33 @@ Following services are disabled by default, nevertheless, it is better to make s
 
   
 
-## NAT Configuration
+## ==NAT Configuration==
 
-At this point, PC is not yet able to access the Internet, because locally used addresses are not routable over the Internet. Remote hosts simply do not know how to correctly reply to your local address.
+At this point, ==PC is not yet able to access the Internet==, because ==locally used addresses are not routable over the Internet==. ==Remote hosts== simply ==do not know how to correctly reply to your local address.==
 
-The solution for this problem is to change the source address for outgoing packets to routers public IP. This can be done with the NAT rule:
+The ==solution== for this problem is to ==change the source address for outgoing packets== ==to routers public IP==. This can be done with the ==NAT rule:==
 
 `/ip firewall nat   add chain=srcnat out-interface=ether1 action=masquerade`
 
 If the public interface is PPPoE, LTE, or any other type, the 'out-interface' should be set to that interface.
 
-Another benefit of such a setup is that NATed clients behind the router are not directly connected to the Internet, that way additional protection against attacks from outside mostly is not required.
+Another benefit of such a setup is that ==NATed clients behind the router are not directly connected== to the Internet, ==that way additional protection against attacks from outside== mostly is not required.
 
-## Port Forwarding
+## ==Port Forwarding==
 
-Some client devices may need direct access to the internet over specific ports. For example, a client with an IP address 192.168.88.254 must be accessible by Remote desktop protocol (RDP).
+==Some client devices may need direct access to the internet over specific ports==. For example, a client with an IP address ==192.168.88.254 must be accessible by Remote desktop protocol (RDP).==
 
-After a quick search on Google, we find out that RDP runs on TCP port 3389. Now we can add a destination NAT rule to redirect RDP to the client's PC.
+==After a quick search on Google, we find out that RDP runs on TCP port 3389. Now we can add a destination NAT rule to redirect RDP to the client's PC==.
 
 `/ip firewall nat   add chain=dstnat protocol=tcp port=3389 in-interface=ether1 \     action=dst-nat to-address=192.168.88.254`
 
 If you have set up strict firewall rules then RDP protocol must be allowed in the firewall filter forward chain.
 
-## Setting up Wireless
+## ==Setting up Wireless==
 
-For ease of use bridged wireless setup will be made so that your wired hosts are in the same Ethernet broadcast domain as wireless clients.
+==For ease of use bridged wireless setup will be made so that your wired hosts are in the same Ethernet broadcast domain as wireless clients.==
 
-The important part is to make sure that our wireless is protected, so the first step is the security profile.
+The ==important part is to make sure that our wireless is protected==, so the first step is the security profile.
 
 Security profiles are configured from `/interface wireless security-profiles` menu in a terminal.
 
@@ -369,16 +369,16 @@ in Winbox/Webfig click on **Wireless** to open wireless windows and choose the *
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/winbox_wlan_sec_profile.png?version=1&modificationDate=1569856421347&api=v2&effects=drop-shadow)
 
-If there are legacy devices that do not support WPA2 (like Windows XP), you may also want to allow WPA protocol.
+==If there are legacy devices that do not support WPA2 (like Windows XP), you may also want to allow WPA protocol.==
 
 Now when the security profile is ready we can enable the wireless interface and set the desired parameters
 
 `/interface wireless   enable wlan1;   set wlan1 band=2ghz-b/g/n channel-width=20/40mhz-Ce distance=indoors \     mode=ap-bridge ssid=MikroTik-006360 wireless-protocol=802.11 \     security-profile=myProfile frequency-mode=regulatory-domain \     set country=latvia antenna-gain=3`
 
-To do the same from Winbox/Webfig:
+==To do the same from Winbox/Webfig:==
 
-- Open Wireless window, select wlan1 interface, and click on the *enable* button;
-- Double click on the wireless interface to open the configuration dialog;
+- Open Wireless window, select ==wlan1== interface, and click on the ==*enable* button==;
+- Double click on the ==wireless interface to open the configuration dialog==;
 - In the configuration dialog click on the **Wireless** tab and click the **Advanced mode** button on the right side. When you click on the button additional configuration parameters will appear and the description of the button will change to **Simple mode**;
 - Choose parameters as shown in the screenshot, except for the country settings and SSID. You may want to also choose a different frequency and antenna gain;
 - Next, click on the **HT** tab and make sure both chains are selected;
@@ -392,21 +392,21 @@ The last step is to add a wireless interface to a local bridge, otherwise connec
 
 Now wireless should be able to connect to your access point, get an IP address, and access the internet.
 
-## Protecting the Clients
+## ==Protecting the Clients==
 
-Now it is time to add some protection for clients on our LAN. We will start with a basic set of rules.
+Now it is time to ==add some protection for clients on our LAN==. We will start with a basic set of rules.
 
-A ruleset is similar to input chain rules (accept established/related and drop invalid), except the first rule with `action=fasttrack-connection`. This rule allows established and related connections to bypass the firewall and significantly reduce CPU usage.
+A ruleset is similar to input chain rules (accept established/related and drop invalid), except the ==first rule== with `action=fasttrack-connection`. This rule ==allows established and related connections to bypass the firewall and significantly reduce CPU usage.==
 
-Another difference is the last rule which drops all new connection attempts from the WAN port to our LAN network (unless DstNat is used). Without this rule, if an attacker knows or guesses your local subnet, he/she can establish connections directly to local hosts and cause a security threat.
+Another difference is the last ==rule which drops all new connection attempts from the WAN port to our LAN network== (unless DstNat is used). ==Without this rule, if an attacker knows or guesses your local subnet, he/she can establish connections directly to local hosts and cause a security threat.==
 
-For more detailed examples on how to build firewalls will be discussed in the firewall section.
+==For more detailed examples on how to build firewalls== will be discussed in the firewall section.
 
-## Blocking Unwanted Websites
+## ==Blocking Unwanted Websites==
 
-Sometimes you may want to block certain websites, for example, deny access to entertainment sites for employees, deny access to porn, and so on. This can be achieved by redirecting HTTP traffic to a proxy server and use an access-list to allow or deny certain websites.
+==Sometimes you may want to block certain websites==, for example, deny access to entertainment sites for employees, deny access to porn, and so on. This can be ==achieved by redirecting HTTP traffic to a proxy server and use an access-list to allow or deny certain websites.==
 
-First, we need to add a NAT rule to redirect HTTP to our proxy. We will use RouterOS built-in proxy server running on port 8080.
+==First==, we need to ==add a NAT rule to redirect HTTP to our proxy==. We will use ==RouterOS built-in proxy server== running on port ==8080==.
 
 `/ip firewall nat   add chain=dst-nat protocol=tcp dst-port=80 src-address=192.168.88.0/24 \     action=redirect to-ports=8080`
 
@@ -418,20 +418,20 @@ Using Winbox:
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/winbox_ip_web_proxy.png?version=1&modificationDate=1569856600346&api=v2&effects=drop-shadow)
 
-- In the "Web Proxy Access" dialog click on "+" to add a new Web-proxy rule
+- ==In the "Web Proxy Access"== dialog click on "+" to add a new Web-proxy rule
 - Enter Dst hostname that you want to block, in this case, " [www.facebook.com](https://www.facebook.com/) ", choose the action "deny"
 - Then click on the "Ok" button to apply changes.
 - Repeat the same to add other rules.
 
 ![](https://help.mikrotik.com/docs/download/attachments/328151/winbox_ip_web_proxy_access.png?version=1&modificationDate=1569856640042&api=v2&effects=drop-shadow)
 
-## Troubleshooting
+## ==Troubleshooting==
 
-RouterOS has built-in various troubleshooting tools, like ping, traceroute, torch, packet sniffer, bandwidth test, etc.
+==RouterOS has built-in various troubleshooting tools==, like ping, traceroute, torch, packet sniffer, bandwidth test, etc.
 
 We already used the ping tool in this article to [verify internet connectivity](https://help.mikrotik.com/docs/spaces/ROS/pages/328151/#FirstTimeConfiguration-VerifyConnectivity).
 
-## Troubleshoot if ping fails
+## ==Troubleshoot if ping fails==
 
 The problem with the ping tool is that it says only that destination is **unreachable**, but no more detailed information is available. Let's overview the basic mistakes.
 
