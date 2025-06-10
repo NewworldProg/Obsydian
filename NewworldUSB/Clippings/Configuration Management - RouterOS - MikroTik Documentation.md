@@ -219,15 +219,15 @@ wmware iexsi
 
 ## ==Auto Import==
 
-It is also possible to **automatically** execute scripts after uploading to the router with FTP or SFTP. The script file must be named with the extension \*.auto.rsc. Once the commands in the file are executed, a new \*.auto.log file is created which contains import success or failure information.
+==It is also possible to **automatically** execute scripts after uploading to the router with FTP or SFTP==. The script file must be named with the ==extension \*.auto.rsc==. Once the commands in the file are executed, a new \*.auto.log file is created which contains import success or failure information.
 
 ".auto.rsc" in the filename is mandatory for a file to be automatically executed.
 
 ## ==Import troubleshooting==
 
-### Configuration parts to watch out for in exported.rsc files
+### ==Configuration parts to watch out for in exported.rsc files==
 
-Things that should be removed from export files that were created with "/export", before attempting import on a new device.
+==Things that should be removed from export files that were created with "/export", before attempting import== on a new device.
 
 - Interface renaming conflicts with the default ethernet naming scheme.
 
@@ -235,8 +235,8 @@ Things that should be removed from export files that were created with "/export"
 
   
 
-- In older versions "export" default entries might show with "add" instead of the "set" command. That should be edited before import to avoid errors.
-- Check if the total number of physical interfaces count matches the new and old devices. If there are some missing that will end up in error during.rsc import.
+- In older versions "export" default entries might show with =="add" instead of the "set"== command. That should be edited before import to avoid errors.
+- Check if the total ==number of physical interfaces count matches the new and old devices==. If there are some missing that will end up in error during.rsc import.
 
 ==In case of problematic import, attempt the following:==
 

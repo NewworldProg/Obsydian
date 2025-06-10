@@ -56,7 +56,7 @@ Important:
 ```
 ==Some malware camouflages itself as ComAgent.exe, particularly when located in the C:\\Windows or C:\\Windows\\System32 folder==. Therefore, you should check the ComAgent.exe process on your PC to see if it is a threat. ==We recommend **[Security Task Manager](https://www.neuber.com/taskmanager/index.html?ref=file.net)** for verifying your computer's security==. This was one of the *Top Download Picks* of *The Washington Post* and *PC World*.
 
-## Best practices for resolving ComAgent issues
+## ==Best practices for resolving ComAgent issues==
 
 A clean and tidy computer is the key requirement for avoiding problems with ComAgent. This means running a scan for malware, cleaning your hard drive using [1 cleanmgr](https://www.file.net/info/command.html?q=cleanmgr) and [2 sfc /scannow](https://www.file.net/info/command.html?q=sfc%20%2Fscannow), [3 uninstalling programs](https://www.file.net/info/uninstall.html?q=unnecessary%20programs) that you no longer need, checking for Autostart programs (using [4 msconfig](https://www.file.net/info/command.html?q=msconfig) ) and enabling Windows' [5 Automatic Update](https://www.file.net/info/command.html?q=wuauclt%20%2FShowWindowsUpdate). Always remember to perform periodic backups, or at least to set restore points.
 

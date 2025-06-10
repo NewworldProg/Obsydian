@@ -1,0 +1,199 @@
+{
+  "main": {
+    "id": "4dbacc668f64c964",
+    "type": "split",
+    "children": [
+      {
+        "id": "09d1c667ab7125ae",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0d3367951ad42c7b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "NewworldUSB/Clippings/Configuration Management - RouterOS - MikroTik Documentation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Configuration Management - RouterOS - MikroTik Documentation"
+            }
+          },
+          {
+            "id": "269b7e46215051ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Clippings/Link Elearning 2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Link Elearning 2"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f28a31000f26050c",
+    "type": "split",
+    "children": [
+      {
+        "id": "66a95c0e904d56ee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aaa3bc5b8cee2386",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a30b2afd604e0158",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "nat",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "deba7c75254d5e93",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "96263c9587c66203",
+    "type": "split",
+    "children": [
+      {
+        "id": "137d0c0542f8d477",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "258503b3b8bdff81",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "NewworldUSB/mikrotik/First Time Configuration - RouterOS - MikroTik Documentation.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for First Time Configuration - RouterOS - MikroTik Documentation"
+            }
+          },
+          {
+            "id": "51e7bf31f5d59695",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "NewworldUSB/mikrotik/First Time Configuration - RouterOS - MikroTik Documentation.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from First Time Configuration - RouterOS - MikroTik Documentation"
+            }
+          },
+          {
+            "id": "169a52e4a2994ee5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "27068c084f7bec69",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "NewworldUSB/mikrotik/First Time Configuration - RouterOS - MikroTik Documentation.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of First Time Configuration - RouterOS - MikroTik Documentation"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "aaa3bc5b8cee2386",
+  "lastOpenFiles": [
+    "Clippings/Link Elearning 1.md",
+    "Clippings/Link Elearning 2.md",
+    "Clippings/Link Elearning.md",
+    "NewworldUSB/mikrotik/First Time Configuration - RouterOS - MikroTik Documentation.md",
+    "Clippings",
+    "NewworldUSB/Clippings/Packages - RouterOS - MikroTik Documentation.md",
+    "Untitled 1.md",
+    "Untitled.md",
+    "NewworldUSB/Clippings/Configuration Management - RouterOS - MikroTik Documentation.md",
+    "NewworldUSB/Clippings/ComAgent.exe Windows process - What is it.md"
+  ]
+}
